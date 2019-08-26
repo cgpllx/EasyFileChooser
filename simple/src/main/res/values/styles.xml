@@ -10,8 +10,8 @@
     <style name="FileChooserStyle_Dark" parent="FileChooserStyle">
         <item name="fileChooserDialogGravity">center</item>
         <item name="fileChooserDialogStyle">@style/FileChooserDialogStyle_Dark</item>
-        <item name="fileChooserListItemStyle">@style/FileChooserListItemStyle_Dark</item>
-        <item name="fileChooserPathViewStyle">@style/FileChooserPathViewStyle_Dark</item>
+        <!--<item name="fileChooserListItemStyle">@style/FileChooserListItemStyle_Dark</item>-->
+        <!--<item name="fileChooserPathViewStyle">@style/FileChooserPathViewStyle_Dark</item>-->
         <item name="fileChooserNewFolderStyle">@style/FileChooserNewFolderStyle_Dark</item>
     </style>
 
@@ -51,8 +51,8 @@
     </style>
 
     <style name="FileChooserPathViewStyle_Dark" parent="FileChooserPathViewStyle">
-        <item name="android:background">@color/background_dark</item>
-        <item name="android:textColor">@color/text_light_opaque</item>
+        <item name="android:background">@color/text_light </item>
+        <item name="android:textColor">@color/background_dark</item>
     </style>
 
     <style name="FileChooserNewFolderStyle_Dark">
