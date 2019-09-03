@@ -1,4 +1,4 @@
-package cc.easyandroid.listfiltermenu;
+package cc.easyandroid.filechooser.simple;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

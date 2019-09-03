@@ -60,7 +60,7 @@ import java.util.regex.Pattern;
  * Created by coco on 6/7/15.
  */
 public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInterface.OnClickListener,
-    AdapterView.OnItemLongClickListener, AdapterView.OnItemSelectedListener {
+        AdapterView.OnItemLongClickListener, AdapterView.OnItemSelectedListener {
     @FunctionalInterface
     public interface Result {
         void onChoosePath(String dir, File dirFile);
@@ -123,7 +123,7 @@ public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInt
         if (fileChooserTheme == null) {
             TypedValue typedValue = new TypedValue();
             if (!this._context.getTheme().resolveAttribute(
-                R.attr.fileChooserStyle, typedValue, true)) {
+                    R.attr.fileChooserStyle, typedValue, true)) {
                 this._context = new ContextThemeWrapper(this._context, R.style.FileChooserStyle);
             } else {
                 this._context = new ContextThemeWrapper(this._context, typedValue.resourceId);
@@ -154,8 +154,8 @@ public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInt
         this._dirOnly = dirOnly;
         if (suffixes == null || suffixes.length == 0) {
             this._fileFilter = dirOnly ?
-                file -> file.isDirectory() && (!file.isHidden() || allowHidden) : file ->
-                !file.isHidden() || allowHidden;
+                    file -> file.isDirectory() && (!file.isHidden() || allowHidden) : file ->
+                    !file.isHidden() || allowHidden;
         } else {
             this._fileFilter = new ExtFileFilter(_dirOnly, allowHidden, suffixes);
         }
@@ -203,8 +203,8 @@ public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInt
     }
 
     /**
-     *  called every time {@link KeyEvent#KEYCODE_BACK} is caught,
-     *  and current directory is not the root of Primary/SdCard storage.
+     * called every time {@link KeyEvent#KEYCODE_BACK} is caught,
+     * and current directory is not the root of Primary/SdCard storage.
      */
     public ChooserDialog withOnBackPressedListener(OnBackPressedListener listener) {
         if (this._onBackPressed instanceof defBackPressed) {
@@ -232,7 +232,7 @@ public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInt
     }
 
     public ChooserDialog withStringResources(@Nullable String titleRes, @Nullable String okRes,
-        @Nullable String cancelRes) {
+                                             @Nullable String cancelRes) {
         this._title = titleRes;
         this._ok = okRes;
         this._negative = cancelRes;
@@ -252,7 +252,7 @@ public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInt
     }
 
     public ChooserDialog withOptionResources(@StringRes int createDirRes, @StringRes int deleteRes,
-        @StringRes int newFolderCancelRes, @StringRes int newFolderOkRes) {
+                                             @StringRes int newFolderCancelRes, @StringRes int newFolderOkRes) {
         this._createDirRes = createDirRes;
         this._deleteRes = deleteRes;
         this._newFolderCancelRes = newFolderCancelRes;
@@ -261,7 +261,7 @@ public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInt
     }
 
     public ChooserDialog withOptionStringResources(@Nullable String createDir, @Nullable String delete,
-        @Nullable String newFolderCancel, @Nullable String newFolderOk) {
+                                                   @Nullable String newFolderCancel, @Nullable String newFolderOk) {
         this._createDir = createDir;
         this._delete = delete;
         this._newFolderCancel = newFolderCancel;
@@ -270,7 +270,7 @@ public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInt
     }
 
     public ChooserDialog withOptionIcons(@DrawableRes int optionsIconRes, @DrawableRes int createDirIconRes,
-        @DrawableRes int deleteRes) {
+                                         @DrawableRes int deleteRes) {
         this._optionsIconRes = optionsIconRes;
         this._createDirIconRes = createDirIconRes;
         this._deleteIconRes = deleteRes;
@@ -278,7 +278,7 @@ public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInt
     }
 
     public ChooserDialog withOptionIcons(@Nullable Drawable optionsIcon, @Nullable Drawable createDirIcon,
-        @Nullable Drawable deleteIcon) {
+                                         @Nullable Drawable deleteIcon) {
         this._optionsIcon = optionsIcon;
         this._createDirIcon = createDirIcon;
         this._deleteIcon = deleteIcon;
@@ -326,14 +326,14 @@ public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInt
     }
 
     public ChooserDialog withNegativeButton(@StringRes int cancelTitle,
-        final DialogInterface.OnClickListener listener) {
+                                            final DialogInterface.OnClickListener listener) {
         this._negativeRes = cancelTitle;
         this._negativeListener = listener;
         return this;
     }
 
     public ChooserDialog withNegativeButton(@Nullable String cancelTitle,
-        final DialogInterface.OnClickListener listener) {
+                                            final DialogInterface.OnClickListener listener) {
         this._negative = cancelTitle;
         if (cancelTitle != null) this._negativeRes = -1;
         this._negativeListener = listener;
@@ -360,7 +360,7 @@ public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInt
     }
 
     public ChooserDialog withFileIcons(final boolean tryResolveFileTypeAndIcon, final Drawable fileIcon,
-        final Drawable folderIcon) {
+                                       final Drawable folderIcon) {
         _adapterSetter = adapter -> {
             if (fileIcon != null) adapter.setDefaultFileIcon(fileIcon);
             if (folderIcon != null) adapter.setDefaultFolderIcon(folderIcon);
@@ -370,14 +370,14 @@ public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInt
     }
 
     public ChooserDialog withFileIconsRes(final boolean tryResolveFileTypeAndIcon, final int fileIcon,
-        final int folderIcon) {
+                                          final int folderIcon) {
         _adapterSetter = adapter -> {
             if (fileIcon != -1) {
                 adapter.setDefaultFileIcon(ContextCompat.getDrawable(_context, fileIcon));
             }
             if (folderIcon != -1) {
                 adapter.setDefaultFolderIcon(
-                    ContextCompat.getDrawable(_context, folderIcon));
+                        ContextCompat.getDrawable(_context, folderIcon));
             }
             adapter.setResolveFileType(tryResolveFileTypeAndIcon);
         };
@@ -466,19 +466,19 @@ public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInt
     public ChooserDialog build() {
         TypedArray ta = _context.obtainStyledAttributes(R.styleable.FileChooser);
         final AlertDialog.Builder builder = new AlertDialog.Builder(_context,
-            ta.getResourceId(R.styleable.FileChooser_fileChooserDialogStyle, R.style.FileChooserDialogStyle));
+                ta.getResourceId(R.styleable.FileChooser_fileChooserDialogStyle, R.style.FileChooserDialogStyle));
         final int style = ta.getResourceId(R.styleable.FileChooser_fileChooserListItemStyle,
-            R.style.FileChooserListItemStyle);
+                R.style.FileChooserListItemStyle);
         ta.recycle();
         final Context context = new ContextThemeWrapper(_context, style);
         ta = context.obtainStyledAttributes(R.styleable.FileChooser);
         final int listview_item_selector = ta.getResourceId(R.styleable.FileChooser_fileListItemFocusedDrawable,
-            R.drawable.listview_item_selector);
+                R.drawable.listview_item_selector);
         ta.recycle();
 
         if (_rowLayoutRes != -1) {
             _adapter = new DirAdapter(context,
-                new ArrayList<>(), _rowLayoutRes, this._dateFormat);
+                    new ArrayList<>(), _rowLayoutRes, this._dateFormat);
         } else {
             _adapter = new DirAdapter(context, this._dateFormat);
         }
@@ -542,7 +542,7 @@ public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInt
         }
 
         builder.setOnItemSelectedListener(this)
-            .setOnKeyListener(new keyListener(this));
+                .setOnKeyListener(new keyListener(this));
 
         _alertDialog = builder.create();
 
@@ -620,15 +620,15 @@ public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInt
                 @Override
                 public void onShouldShowRequestPermissionRationale(final String[] permissions) {
                     Toast.makeText(_context, "You denied the Read/Write permissions on SDCard.",
-                        Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_LONG).show();
                 }
             };
         }
 
         final String[] permissions =
-            _enableOptions ? new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE}
-                : new String[]{Manifest.permission.READ_EXTERNAL_STORAGE};
+                _enableOptions ? new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE}
+                        : new String[]{Manifest.permission.READ_EXTERNAL_STORAGE};
 
         PermissionsUtil.checkPermissions(_context, _permissionListener, permissions);
 
@@ -653,7 +653,7 @@ public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInt
 
             TypedArray ta = _context.obtainStyledAttributes(R.styleable.FileChooser);
             int style = ta.getResourceId(R.styleable.FileChooser_fileChooserPathViewStyle,
-                R.style.FileChooserPathViewStyle);
+                    R.style.FileChooserPathViewStyle);
             final Context context = new ContextThemeWrapper(_context, style);
             ta.recycle();
             ta = context.obtainStyledAttributes(R.styleable.FileChooser);
@@ -759,6 +759,9 @@ public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInt
             }
         }
         boolean displayPath = false;
+        boolean isempty = _entries.isEmpty();
+        boolean nonull = _currentDir.getParentFile() != null;
+        boolean canRead = _currentDir.getParentFile().canRead();
         if (_entries.isEmpty() && _currentDir.getParentFile() != null && _currentDir.getParentFile().canRead()) {
             _entries.add(new RootFile(_currentDir.getParentFile().getAbsolutePath(), ".."));
             displayPath = true;
@@ -805,12 +808,27 @@ public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInt
         //   Caused by android.util.AndroidRuntimeException: requestFeature() must be called before adding
         // content
         // issue #60
-        if (_alertDialog != null && _alertDialog.isShowing() && _displayPath) {
-            if (displayPath) {
-                displayPath(_currentDir.getPath());
-            } else {
-                displayPath(null);
+        if (_alertDialog != null  && _displayPath) {
+            if( _alertDialog.isShowing()){
+                if (displayPath) {
+                    displayPath(_currentDir.getPath());
+                } else {
+                    displayPath(null);
+                }
+            }else{
+                if (displayPath) {//第一次启动的时候不会显示path
+                    _alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                        @Override
+                        public void onShow(DialogInterface dialogInterface) {
+                            displayPath(_currentDir.getPath());
+                        }
+                    });
+                }
             }
+
+
+
+
         }
     }
 
@@ -826,8 +844,8 @@ public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInt
 
         final File newDir = new File(_currentDir, name);
         Toast.makeText(_context,
-            "Couldn't create folder " + newDir.getName() + " at " + newDir.getAbsolutePath(),
-            Toast.LENGTH_LONG).show();
+                "Couldn't create folder " + newDir.getName() + " at " + newDir.getAbsolutePath(),
+                Toast.LENGTH_LONG).show();
     }
 
     Runnable _deleteModeIndicator;
@@ -1032,7 +1050,7 @@ public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInt
      */
     public boolean goBack() {
         if (_entries.size() > 0 &&
-            (_entries.get(0).getName().equals(".."))) {
+                (_entries.get(0).getName().equals(".."))) {
             _list.performItemClick(_list, 0, 0);
             return true;
         }

@@ -31,8 +31,6 @@ import cc.easyandroid.filechooser.ChooserDialog;
 import cc.easyandroid.filechooser.demo.tool.ImageUtil;
 import cc.easyandroid.filechooser.internals.FileUtil;
 import cc.easyandroid.filechooser.tool.RootFile;
-import cc.easyandroid.listfiltermenu.simple.BuildConfig;
-import cc.easyandroid.listfiltermenu.simple.R;
 
 
 /**

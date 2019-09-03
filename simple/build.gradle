@@ -5,6 +5,7 @@ android {
     buildToolsVersion "27.0.3"
 
     defaultConfig {
+        applicationId "cc.easyandroid.filechooser.demo"
         minSdkVersion 14
         targetSdkVersion 28
         versionCode 1

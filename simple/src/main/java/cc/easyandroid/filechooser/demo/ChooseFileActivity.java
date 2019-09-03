@@ -14,8 +14,7 @@ import android.view.MenuItem;
 
 import java.util.Locale;
 
-import cc.easyandroid.listfiltermenu.simple.BuildConfig;
-import cc.easyandroid.listfiltermenu.simple.R;
+
 
 public class ChooseFileActivity extends AppCompatActivity {
 
