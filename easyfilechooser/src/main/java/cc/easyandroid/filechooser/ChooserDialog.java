@@ -547,8 +547,15 @@ public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInt
         _alertDialog = builder.create();
 
         _alertDialog.setCanceledOnTouchOutside(this._cancelOnTouchOutside);
-        _alertDialog.setOnShowListener(new onShowListener(this, listview_item_selector));
-
+        _alertDialog.setOnShowListener(new onShowListener(this, listview_item_selector) {
+            @Override
+            public void onShow(DialogInterface dialog) {
+                super.onShow(dialog);
+                if(_displayPath){
+                    displayPath(_currentDir.getPath());
+                }
+            }
+        });
         _list = _alertDialog.getListView();
         _list.setOnItemClickListener(this);
         if (_enableMultiple) {
@@ -808,25 +815,23 @@ public class ChooserDialog implements AdapterView.OnItemClickListener, DialogInt
         //   Caused by android.util.AndroidRuntimeException: requestFeature() must be called before adding
         // content
         // issue #60
-        if (_alertDialog != null  && _displayPath) {
-            if( _alertDialog.isShowing()){
+        if (_alertDialog != null && _displayPath) {
+            if (_alertDialog.isShowing()) {
                 if (displayPath) {
                     displayPath(_currentDir.getPath());
                 } else {
                     displayPath(null);
                 }
-            }else{
-                if (displayPath) {//第一次启动的时候不会显示path
-                    _alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
-                        @Override
-                        public void onShow(DialogInterface dialogInterface) {
-                            displayPath(_currentDir.getPath());
-                        }
-                    });
-                }
+            } else {
+//                if (displayPath) {//第一次启动的时候不会显示path
+//                    _alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+//                        @Override
+//                        public void onShow(DialogInterface dialogInterface) {
+//                            displayPath(_currentDir.getPath());
+//                        }
+//                    });
+//                }
             }
-
-
 
 
         }
