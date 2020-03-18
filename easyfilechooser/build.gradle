@@ -3,7 +3,7 @@ apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 28
-    buildToolsVersion "27.0.3"
+    buildToolsVersion "28.0.2"
 
     defaultConfig {
         minSdkVersion 14
@@ -39,14 +39,14 @@ allprojects {
 
 dependencies {
     testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
 
 }
 publish {
     userOrg = 'cgpllx'      //bintray注册的用户名
     groupId = 'cc.easyandroid'         //compile引用时的第1部分groupId
     artifactId = 'EasyFileChooser'     //compile引用时的第2部分项目名
-    publishVersion = '1.0.2'    //compile引用时的第3部分版本号
+    publishVersion = '1.1.0'    //compile引用时的第3部分版本号
     desc = 'Very convenient to use EasyFileChooser'
     website = 'https://github.com/cgpllx/EasyFileChooser'
 }

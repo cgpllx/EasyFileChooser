@@ -1,7 +1,7 @@
 package cc.easyandroid.filechooser;
 
 import android.app.Dialog;
-import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 
 import java.lang.ref.WeakReference;
 
